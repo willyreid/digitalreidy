@@ -41,7 +41,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2.5rem;
+      padding: 0 2.5rem 0 1.75rem;
       height: 68px;
       background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(12px);
@@ -142,7 +142,8 @@
     }
 
     .hero-logo {
-      height: 160px;
+      width: min(550px, 80vw);
+      height: auto;
       margin-bottom: 2.5rem;
       filter: drop-shadow(0 6px 24px rgba(0,0,0,0.6));
       display: block;
@@ -176,7 +177,7 @@
 
     #hero h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 1.25rem;
@@ -202,6 +203,12 @@
     }
 
     .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 480px) {
+      #hero { padding: 6rem 1.25rem 4rem; }
+      .hero-inner { width: 100%; }
+      .hero-badge { font-size: 0.72rem; letter-spacing: 0.03em; }
+    }
 
     .btn {
       display: inline-block;
