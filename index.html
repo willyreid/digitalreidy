@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Reidy | Small Business Digital Services Australia</title>
+  <meta name="description" content="Digital Reidy helps Australian small businesses get online with confidence. Expert help with business registration, domains, email, websites, and cybersecurity — clear advice, no jargon." />
+  <link rel="icon" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #3682AE;
+      --blue-light: #439DD1;
+      --blue-dark:  #113347;
+      --dark:       #0f172a;
+      --text:       #475569;
+      --text-light: #94a3b8;
+      --surface:    #f8fafc;
+      --white:      #ffffff;
+      --border:     #e2e8f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--white);
+    }
+
+    /* ── NAV ───────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 68px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo { height: 36px; display: block; filter: brightness(0) invert(1); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    nav ul a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--white); }
+
+    nav ul .nav-cta {
+      padding: 0.5rem 1.25rem;
+      background: var(--blue);
+      color: var(--white) !important;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.2s !important;
+    }
+
+    nav ul .nav-cta:hover { background: var(--blue-light) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 680px) {
+      .nav-toggle { display: flex; }
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        flex-direction: column;
+        background: var(--dark);
+        padding: 2rem 2.5rem;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      nav ul.open { display: flex; }
+      nav ul .nav-cta { text-align: center; }
+    }
+
+    /* ── HERO ──────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 0 L56 16 L56 50 L28 66 L0 50 L0 16 Z' fill='none' stroke='rgba(255,255,255,0.045)' stroke-width='1'/%3E%3Cpath d='M28 66 L56 82 L56 116 L28 132 L0 116 L0 82 Z' fill='none' stroke='rgba(255,255,255,0.045)' stroke-width='1'/%3E%3Cpath d='M56 16 L84 0' fill='none' stroke='rgba(255,255,255,0.045)' stroke-width='1'/%3E%3Cpath d='M56 50 L84 66' fill='none' stroke='rgba(255,255,255,0.045)' stroke-width='1'/%3E%3C/svg%3E"),
+        radial-gradient(ellipse 120% 110% at 50% 40%, #2d7aaa 0%, #1a5070 25%, #0f2e45 55%, #060d18 100%);
+      color: var(--white);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-30px); }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-logo {
+      height: 160px;
+      margin-bottom: 2.5rem;
+      filter: drop-shadow(0 6px 24px rgba(0,0,0,0.6));
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 auto 2rem;
+      border-radius: 2px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(54,130,174,0.45);
+      border: 1px solid rgba(54,130,174,0.7);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 1.5rem;
+    }
+
+    #hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    #hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #60a5fa, #3682AE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      opacity: 0.8;
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(54,130,174,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.7);
+      box-shadow: none;
+    }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.45;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .scroll-hint svg { animation: bounce 2s infinite; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    /* ── SECTIONS SHARED ───────────────────────────────────── */
+    section { padding: 4rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    /* ── STATS STRIP ───────────────────────────────────────── */
+    #stats {
+      padding: 2rem 2rem;
+      background: var(--blue-dark);
+      color: var(--white);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.4rem;
+    }
+
+    /* ── ABOUT ─────────────────────────────────────────────── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px 12px 12px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      border-radius: 16px;
+      z-index: 0;
+    }
+
+    .about-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-text p { margin-bottom: 1.1rem; font-size: 1.02rem; }
+
+    .mission-box {
+      margin-top: 2.5rem;
+      padding: 1.75rem 2.5rem;
+      border-left: 4px solid var(--blue);
+      background: linear-gradient(135deg, #f0f7ff, #e8f4fd);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--blue-dark);
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo-wrap { max-width: 360px; }
+    }
+
+    /* ── SERVICES ──────────────────────────────────────────── */
+    #services { background: var(--surface); }
+
+    .services-intro {
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    .services-intro p { color: var(--text); font-size: 1.05rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    }
+
+    .card.featured {
+      border-color: var(--blue);
+      box-shadow: 0 4px 24px rgba(54,130,174,0.15), 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .card.featured::before {
+      height: 5px;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 40px rgba(54,130,174,0.15), 0 2px 8px rgba(0,0,0,0.08);
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .card .price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--blue-dark);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .card .price-note {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      flex: 1;
+      line-height: 1.65;
+    }
+
+    .card .btn {
+      margin-top: 1.75rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* ── TESTIMONIALS ──────────────────────────────────────── */
+    #testimonials { background: #f0f4f7; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem 2rem 1.75rem;
+      border-left: 4px solid var(--blue);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      color: #f59e0b;
+      font-size: 1.35rem;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .testimonial-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.1rem;
+    }
+
+    /* ── BTN DARK ───────────────────────────────────────────── */
+    .btn-dark { background: var(--blue-dark); }
+    .btn-dark:hover { background: var(--blue); }
+
+    /* ── CONTACT ───────────────────────────────────────────── */
+    #contact {
+      background: linear-gradient(135deg,
+        #0f2a3d 0%,
+        #1a3f57 50%,
+        #113347 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(54,130,174,0.18) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    #contact .section-title { color: var(--white); }
+    #contact .eyebrow { color: var(--blue-light); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-intro p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+    }
+
+    .contact-detail svg { flex-shrink: 0; color: var(--blue-light); }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    form input,
+    form textarea {
+      padding: 0.85rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+    }
+
+    form input::placeholder,
+    form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--blue-light);
+      background: rgba(255,255,255,0.09);
+    }
+
+    form textarea { resize: vertical; min-height: 120px; }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 760px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    footer {
+      background: #060d18;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      padding: 1.75rem 2rem;
+      font-size: 0.83rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero"><img src="logo-trimmed.png" alt="Digital Reidy" class="nav-logo" /></a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('nav ul').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <img src="logo-trimmed.png" alt="Digital Reidy logo" class="hero-logo" />
+      <div class="hero-divider"></div>
+      <div class="hero-badge">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+        Small Business Digital Services · Australia
+      </div>
+      <h1>Your business, ready for<br/>the <em>digital world</em></h1>
+      <p>Clear, practical technology guidance for small businesses — no jargon, no overwhelm, just results.</p>
+      <div class="hero-cta-group">
+        <a href="#services" class="btn">View Our Services</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years in the Software Industry</div>
+        </div>
+        <div>
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Years Helping Small Businesses</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Honest, Jargon-Free Advice</div>
+        </div>
+        <div>
+          <div class="stat-num">AU</div>
+          <div class="stat-label">Australia-Wide Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+          <img src="will-photo.png" alt="Will Reid – Founder, Digital Reidy" class="about-photo" />
+        </div>
+        <div class="about-text">
+          <span class="eyebrow">About Us</span>
+          <h2 class="section-title">Meet Digital Reidy</h2>
+          <p>Hi, I'm Will Reid. With over 10 years in the software industry and 5 years working directly with small businesses, I know how daunting the digital world can feel — especially when you're trying to focus on actually running your business.</p>
+          <p>Digital Reidy exists to take that pressure off. Whether you're just starting out or looking to strengthen what you've already built, I'll guide you through the right steps at the right time — from business registration and domain names to email, websites, cybersecurity, and hardware.</p>
+          <p>No jargon. No upselling. Just straight-talking advice you can act on.</p>
+        </div>
+      </div>
+      <div class="mission-box">
+        "Digital Reidy exists to support small businesses in taking their next digital step — offering clear, honest advice that removes barriers and builds lasting confidence."
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <span class="eyebrow">Client Reviews</span>
+      <h2 class="section-title">See What Our Clients Say</h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>Will helped set up a full suite of digital services for my small business — from business registration and domain name to email and a Google Business Profile. It allowed me to focus on the day-to-day running of the business, knowing I had guidance from Digital Reidy to manage my online presence.</blockquote>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar">BM</div>
+            <div>
+              <div class="testimonial-author">Bec Murray</div>
+              <div class="testimonial-role">Blooms By Bec</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>Digital Reidy helped me build an online portfolio for my art. Will tailored a solution to my needs and explained each step clearly. He was patient and generous with his time and knowledge, which made the process easy and stress-free. I now feel confident growing my brand and highly recommend Will to anyone looking to boost their online presence.</blockquote>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar">V</div>
+            <div>
+              <div class="testimonial-author">Vanessa</div>
+              <div class="testimonial-role">VKS Art</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>Digital Reidy has provided exceptional service for our business, from the initial consultation to implementation. Will has become an extension of our team and the backbone of our IT services. There were many areas outside our expertise, and he seamlessly guided us, set up systems, and implemented protocols to ensure our business runs smoothly and safely. We couldn’t recommend him more highly.</blockquote>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar">JK</div>
+            <div>
+              <div class="testimonial-author">Jordan Kies</div>
+              <div class="testimonial-role">Pirie Property Group</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-intro">
+        <span class="eyebrow">What We Offer</span>
+        <h2 class="section-title">Service Packages</h2>
+        <p>Fixed, transparent pricing — you'll always know exactly what you're getting and what you're paying. Pick the package that matches where your business is today.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="card">
+          <h3>Business Basic</h3>
+          <div class="price">$345</div>
+          <div class="price-note">AUD · One-time</div>
+          <p>Business Basic covers the essentials to get your business off the ground. I’ll guide you through business registration, secure a unique domain, and set up a professional email address — giving you a solid foundation to build on.</p>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+
+        <div class="card featured">
+          <div class="featured-badge">Popular</div>
+          <h3>Business Starter</h3>
+          <div class="price">$625</div>
+          <div class="price-note">AUD · One-time</div>
+          <p>Business Starter includes everything in Business Basic, plus hands-on support across your broader digital setup — hardware recommendations, cybersecurity advice, and basic website assistance to help your business hit the ground running.</p>
+          <a href="#contact" class="btn">Get Started</a>
+        </div>
+
+        <div class="card">
+          <h3>Business Security</h3>
+          <div class="price">POA</div>
+          <div class="price-note">Price on application</div>
+          <p>A cybersecurity audit provides a comprehensive review of your business’s security systems, policies, and practices to identify vulnerabilities. Gain confidence knowing your data and networks are protected from cyber threats, with clear recommendations for improvement.</p>
+          <a href="#contact" class="btn btn-dark">Enquire Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-intro">
+          <span class="eyebrow">Let's Talk</span>
+          <h2 class="section-title">Let's get your business moving</h2>
+          <p>Not sure where to start? That's exactly what I'm here for. Drop me a message and I'll get back to you promptly — no commitment, no pressure.</p>
+          <div class="contact-detail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            Serving small businesses Australia-wide, entirely remotely
+          </div>
+          <div class="contact-detail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@digitalreidy.com.au" style="color:inherit;">info@digitalreidy.com.au</a>
+          </div>
+        </div>
+        <form id="contact-form" action="https://formspree.io/f/mvzwzolb" method="POST">
+          <div class="form-row">
+            <input type="text"  name="name"  placeholder="Your name *" required />
+            <input type="email" name="email" placeholder="Email address *" required />
+          </div>
+          <input type="tel" name="phone" placeholder="Phone number (optional)" />
+          <textarea name="message" placeholder="Tell us a bit about your business and what you need…"></textarea>
+          <button type="submit" class="btn" id="submit-btn">Send Message →</button>
+          <p class="form-note">Your information is kept private and never shared with third parties.</p>
+          <div id="form-success" style="display:none; margin-top:0.5rem; padding:1rem 1.25rem; background:rgba(54,130,174,0.25); border:1px solid rgba(54,130,174,0.5); border-radius:8px; color:#fff; font-size:0.95rem;">
+            ✓ Message sent! I'll be in touch shortly.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Copyright &copy; 2025 Digital Reidy &mdash; All Rights Reserved.</p>
+  </footer>
+
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('form-success');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMsg.style.display = 'block';
+          submitBtn.textContent = 'Sent ✓';
+        } else {
+          submitBtn.textContent = 'Something went wrong — try again';
+          submitBtn.disabled = false;
+        }
+      } catch {
+        submitBtn.textContent = 'Something went wrong — try again';
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
