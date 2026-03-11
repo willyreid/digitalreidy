@@ -79,13 +79,13 @@
     nav ul .nav-cta {
       padding: 0.5rem 1.25rem;
       background: var(--blue);
-      color: var(--white) !important;
+      color: var(--white);
       border-radius: 6px;
       font-weight: 600;
-      transition: background 0.2s !important;
+      transition: background 0.2s;
     }
 
-    nav ul .nav-cta:hover { background: var(--blue-light) !important; }
+    nav ul .nav-cta:hover { background: var(--blue-light); }
 
     .nav-toggle {
       display: none;
@@ -134,7 +134,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      padding: 8rem 0 7rem;
+      padding: 8rem 0 8rem;
       position: relative;
       overflow: hidden;
       background: url('hero.png') center center / cover no-repeat;
@@ -146,9 +146,9 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to right,
-        rgba(6,13,24,0.75) 0%,
-        rgba(6,13,24,0.55) 45%,
-        rgba(6,13,24,0.15) 100%);
+        rgba(6,13,24,0.7) 0%,
+        rgba(6,13,24,0.5) 45%,
+        rgba(6,13,24,0.1) 100%);
       z-index: 0;
     }
 
@@ -163,53 +163,61 @@
       max-width: 680px;
       opacity: 0;
       animation: fadeInLeft 0.9s ease 0.25s forwards;
+      will-change: transform, opacity;
     }
+
+    .hero-badge svg { flex-shrink: 0; }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 1rem 0.3rem;
       background: rgba(54,130,174,0.45);
       border: 1px solid rgba(54,130,174,0.7);
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       color: #93c5fd;
       margin-bottom: 1.5rem;
     }
 
-    #hero h1 {
+    .hero-title {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 1.25rem;
       letter-spacing: -0.02em;
+      color: var(--white);
     }
 
-    #hero h1 em {
+    .hero-title em {
       font-style: normal;
       color: #42b0e0;
       text-shadow: 0 3px 8px rgba(0,0,0,0.85);
     }
 
-    #hero p {
+    .hero-sub {
       font-size: clamp(1rem, 2vw, 1.15rem);
-      font-weight: 300;
       opacity: 0.85;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       max-width: 520px;
+      line-height: 1.75;
       text-shadow: 0 1px 4px rgba(0,0,0,0.7), 0 2px 12px rgba(0,0,0,0.5);
     }
 
-    .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-ctas .btn-outline { background: rgba(255,255,255,0.08); }
+    .hero-ctas .btn-outline:hover { background: rgba(255,255,255,0.15); }
 
     @media (max-width: 480px) {
-      #hero { padding: 6rem 1.5rem 5rem; }
-      .hero-badge { font-size: 0.72rem; letter-spacing: 0.03em; }
+      #hero { padding: 6rem 0 6.5rem; background-position: 70% center; }
+      .hero-container { padding: 0 1.75rem; }
+      .hero-title { font-size: 2rem; }
     }
 
     .btn {
@@ -257,7 +265,7 @@
       align-items: center;
       gap: 0.4rem;
       opacity: 0.45;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--white);
@@ -276,7 +284,7 @@
 
     .eyebrow {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -681,13 +689,13 @@
     <div class="hero-container">
     <div class="hero-inner">
       <div class="hero-badge">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
-        Small Business Digital Services · Australia
+        <svg width="6" height="6" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+        <span>Small Business Digital Services · Australia</span>
       </div>
-      <h1>Your business,<br/>ready for the<br/><em>digital world</em></h1>
-      <p>Clear, practical technology guidance for small businesses - no jargon, no overwhelm, just results.</p>
-      <div class="hero-cta-group">
-        <a href="#services" class="btn">View Our Services</a>
+      <h1 class="hero-title">Your business,<br/>ready for the<br/><em>digital world</em></h1>
+      <p class="hero-sub">Clear, practical technology guidance for small businesses - no jargon, no overwhelm, just results.</p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn">View Services</a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>
       </div>
     </div>
